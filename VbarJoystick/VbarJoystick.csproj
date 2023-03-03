@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+<!--      <PackageReference Include="vJoyInterface" Version="0.2.1.6" />-->
+        <Reference Include="vJoyInterfaceWrap, Version=0.2.0.5, Culture=neutral, processorArchitecture=MSIL">
+            <SpecificVersion>False</SpecificVersion>
+            <HintPath>..\x64\vJoyInterfaceWrap.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PostBuildEvent>copy $(SolutionDir)x64\vJoyInterface.dll  $(TargetDir).</PostBuildEvent>
+        <PostBuildEvent>copy $(SolutionDir)x64\vJoyInterfaceWrap.dll  $(TargetDir).</PostBuildEvent>
+    </PropertyGroup>
+
+</Project>
