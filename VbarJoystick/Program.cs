@@ -226,16 +226,26 @@ while (true)
                 var buddy = (switches & 0b_0000_0000_0000_0000_0000_0000_0001_0000) != 0;
                 var master = !buddy;
                 
+                var option1A = (switches & 0b_0000_0000_0000_0000_0000_0000_0100_0000) != 0;
+                var option1B = (switches & 0b_0000_0000_0000_0000_0000_0000_1000_0000) != 0;
+                var option1Middle = !option1A && !option1A;
                 
-                //Console.WriteLine($"motorOff {motorOff}   motorOn {motorOn}");
-                joystick.SetBtn(motorOff, joystickId, 1);
-                joystick.SetBtn(motorIdle, joystickId, 2);
-                joystick.SetBtn(motorOn, joystickId, 3);
-                
+                //Console.WriteLine($"Option1A {option1A}   Option1B {option1B}");
                 var middle = (switches & 0b_0000_0000_0000_0000_0000_0000_0000_0010) == 0 &&
                     (switches & 0b_0000_0000_0000_0000_0000_0000_0000_0001) == 0;
                 
-              
+                joystick.SetBtn(motorOff, joystickId, 1);
+                joystick.SetBtn(motorIdle, joystickId, 2);
+                joystick.SetBtn(motorOn, joystickId, 3);
+                joystick.SetBtn(bank1, joystickId, 4);
+                joystick.SetBtn(bank2, joystickId, 5);
+                joystick.SetBtn(bank3, joystickId, 6);
+                joystick.SetBtn(buddy, joystickId, 7);
+                joystick.SetBtn(master, joystickId, 8);
+                joystick.SetBtn(option1A, joystickId, 9);
+                joystick.SetBtn(option1Middle, joystickId, 10);
+                joystick.SetBtn(option1B, joystickId, 11);
+                
 
                 //joystick.SetBtn((switches & 0b_0100_0000_0000_0000_0000_0000_0000_0000) != 0, joystickId, 1);
 
