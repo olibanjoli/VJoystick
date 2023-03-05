@@ -15,6 +15,10 @@
         </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.256" />
+    </ItemGroup>
+
     <PropertyGroup>
         <PostBuildEvent>copy $(SolutionDir)x64\vJoyInterface.dll  $(TargetDir).</PostBuildEvent>
         <PostBuildEvent>copy $(SolutionDir)x64\vJoyInterfaceWrap.dll  $(TargetDir).</PostBuildEvent>
