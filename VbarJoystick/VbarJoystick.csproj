@@ -16,7 +16,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="DebounceThrottle" Version="1.0.0" />
       <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.256" />
+      <PackageReference Include="Spectre.Console" Version="0.46.0" />
     </ItemGroup>
 
     <PropertyGroup>
