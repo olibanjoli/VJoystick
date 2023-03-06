@@ -7,6 +7,7 @@ using System.Text;
 using System.Runtime.CompilerServices;
 using DebounceThrottle;
 using Spectre.Console;
+using VbarJoystick;
 using vJoyInterfaceWrap;
 
 
@@ -89,21 +90,25 @@ string GetBitsAsString(int number)
     return new string(bits);
 }
 
+var gamepadManager = new GamepadManager();
+
 AnsiConsole.Status()
     .AutoRefresh(true)
     .Spinner(Spinner.Known.Default)
     .Start("[yellow]Initializing...[/]", ctx =>
     {
+        gamepadManager.Initialize();
         AnsiConsole.MarkupLine("[grey]checking vJoy installation... [/]");
 
-        if (joystick.vJoyEnabled() == false)
-        {
-            AnsiConsole.MarkupLine("[red]error: [/]vJoy not installed.");
-            Console.WriteLine("vJoy driver not enabled: Failed Getting vJoy attributes.\n");
-            Console.ReadLine();
-            Environment.Exit(0);
-            return;
-        }
+        // if (joystick.vJoyEnabled() == false)
+        // {
+        //     AnsiConsole.MarkupLine("[red]error: [/]vJoy not installed.");
+        //     Console.WriteLine("vJoy driver not enabled: Failed Getting vJoy attributes.\n");
+        //     Console.ReadLine();
+        //     Environment.Exit(0);
+        //     return;
+        // }
+ 
 
         AnsiConsole.MarkupLine("[grey]checking Joystick #1 state [/]");
 

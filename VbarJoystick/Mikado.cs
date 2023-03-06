@@ -9,7 +9,7 @@ public static class Mikado
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int MapRange(int vbarValue, long maxRange)
     {
-        var value = (((vbarValue - VBAR_STICK_MIN) * maxRange) / VBAR_RANGE) + 0;
+        var value = (((vbarValue - VBAR_STICK_MIN) * maxRange) / VBAR_RANGE);
 
         return (int)value;
     }
