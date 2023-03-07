@@ -91,6 +91,7 @@ string GetBitsAsString(int number)
 }
 
 var gamepadManager = new GamepadManager();
+var vbarUdpReceiver = new VbarUdpReceiver(gamepadManager);
 
 AnsiConsole.Status()
     .AutoRefresh(true)
@@ -98,84 +99,31 @@ AnsiConsole.Status()
     .Start("[yellow]Initializing...[/]", ctx =>
     {
         gamepadManager.Initialize();
-        AnsiConsole.MarkupLine("[grey]checking vJoy installation... [/]");
-
-        // if (joystick.vJoyEnabled() == false)
-        // {
-        //     AnsiConsole.MarkupLine("[red]error: [/]vJoy not installed.");
-        //     Console.WriteLine("vJoy driver not enabled: Failed Getting vJoy attributes.\n");
-        //     Console.ReadLine();
-        //     Environment.Exit(0);
-        //     return;
-        // }
- 
-
-        AnsiConsole.MarkupLine("[grey]checking Joystick #1 state [/]");
-
-        var joystickStatus = joystick.GetVJDStatus(joystickId);
-
-        if (joystickStatus != VjdStat.VJD_STAT_FREE)
-        {
-            AnsiConsole.MarkupLine("[red]error: [/] Joystick #1 is not free.");
-            Environment.Exit(0);
-        }
-
-        AnsiConsole.MarkupLine("[grey]acquiring joystick [/]");
-
-        if ((joystickStatus == VjdStat.VJD_STAT_OWN) ||
-            ((joystickStatus == VjdStat.VJD_STAT_FREE) && (!joystick.AcquireVJD(joystickId))))
-        {
-            AnsiConsole.MarkupLine("[red]error: [/] failed to acquire vJoy device #1");
-            Environment.Exit(0);
-        }
-
-        AnsiConsole.MarkupLine("[grey]verifying joystick config[/]");
-
-        var AxisX = joystick.GetVJDAxisExist(joystickId, HID_USAGES.HID_USAGE_X);
-        var AxisY = joystick.GetVJDAxisExist(joystickId, HID_USAGES.HID_USAGE_Y);
-        var AxisZ = joystick.GetVJDAxisExist(joystickId, HID_USAGES.HID_USAGE_Z);
-        var AxisRX = joystick.GetVJDAxisExist(joystickId, HID_USAGES.HID_USAGE_RX);
-        var AxisRY = joystick.GetVJDAxisExist(joystickId, HID_USAGES.HID_USAGE_RY);
-        var AxisRZ = joystick.GetVJDAxisExist(joystickId, HID_USAGES.HID_USAGE_RZ);
-        var buttonCount = joystick.GetVJDButtonNumber(joystickId);
-
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_X, ref maxX);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_Y, ref maxY);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_Z, ref maxZ);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_RX, ref maxRX);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_RY, ref maxRY);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_RZ, ref maxRZ);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_SL0, ref maxSL0);
-        joystick.GetVJDAxisMax(joystickId, HID_USAGES.HID_USAGE_SL1, ref maxSL1);
-
-        uint dllVer = 0, drvVer = 0;
-        var match = joystick.DriverMatch(ref dllVer, ref drvVer);
-
-        // if (match)
-        //     AnsiConsole.MarkupLine("[grey]Version of Driver Matches DLL Version ({0:X})[/]\n", dllVer);
-        // else
-        //     AnsiConsole.MarkupLine("[grey]Version of Driver ({0:X}) does NOT match DLL Version ({1:X})[/]\n", drvVer,
-        //         dllVer);
-
-        AnsiConsole.MarkupLine("[grey]starting udp client[/]");
-
-        udpClient = new UdpClient(1025);
         
-        //AnsiConsole.MarkupLine("waiting for connection from TX...");
+  
+        // AnsiConsole.MarkupLine("[grey]starting udp client[/]");
+        //
+        // udpClient = new UdpClient(1025);
+        //
+        // //AnsiConsole.MarkupLine("waiting for connection from TX...");
+        //
+        // AnsiConsole.MarkupLine("[green3_1]Ready, please start [dodgerblue1]IP UDP Simulator[/] App on VBar Transmitter[/]");
+        // ctx.Status("waiting for connection from VBar TX...");
+        //
+        // var remoteIpEndPoint = new IPEndPoint(IPAddress.Any, 1025);
+        //
+        // receiveBytes = udpClient.Receive(ref remoteIpEndPoint);
+        //
+        // var rule = new Rule($"Connected to TX [blue]Oli[/] [blue dim]1023023[/] (10.0.0.201)");
+        // AnsiConsole.Write(rule);
 
-        AnsiConsole.MarkupLine("[green3_1]Ready, please start [dodgerblue1]IP UDP Simulator[/] App on VBar Transmitter[/]");
-        ctx.Status("waiting for connection from VBar TX...");
-        
-        var remoteIpEndPoint = new IPEndPoint(IPAddress.Any, 1025);
-
-        receiveBytes = udpClient.Receive(ref remoteIpEndPoint);
-        
-        var rule = new Rule($"Connected to TX [blue]Oli[/] [blue dim]1023023[/] (10.0.0.201)");
-        AnsiConsole.Write(rule);
+        ctx.Status("[green]Initialized[/]");
     });
 
 
 AnsiConsole.WriteLine();
+
+vbarUdpReceiver.Run();
 
 var table = new Table()
     .Border(TableBorder.Rounded)

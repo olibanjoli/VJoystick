@@ -13,12 +13,15 @@ public class VbarUdpReceiver
     private byte[] _sendData = new byte[10];
     private VbarControlState _state;
     private IPEndPoint? _remoteIpEndPoint;
+    private int _txSerial;
+    private string _txName;
+    private Table? _table;
 
     public VbarUdpReceiver(GamepadManager gamepadManager)
     {
         _gamepadManager = gamepadManager;
         _state = new VbarControlState();
-        
+
         _sendData[0] = 0x51;
         _sendData[1] = 0x8c;
         _sendData[2] = 1; // Version 1
@@ -28,22 +31,60 @@ public class VbarUdpReceiver
 
     public void Run()
     {
-        _udpClient = new UdpClient(1025);
-
+        byte[] receiveBytes = { };
+        
         AnsiConsole.Status()
             .AutoRefresh(true)
             .Spinner(Spinner.Known.Default)
-            .Start("[yellow]waiting for connection from VBar TX...[/]", ctx =>
+            .Start("[grey]starting udp client[/]", ctx =>
             {
+                _udpClient = new UdpClient(1025);
+
                 _remoteIpEndPoint = new IPEndPoint(IPAddress.Any, 1025);
 
-                var receiveBytes = _udpClient.Receive(ref _remoteIpEndPoint);
-                
-                HandleMessage(receiveBytes);
+                ctx.Status = "[yellow]waiting for connection from VBar TX...[/]";
 
-                var rule = new Rule($"Connected to TX [blue]Oli[/] [blue dim]1023023[/] (10.0.0.201)");
-                AnsiConsole.Write(rule);
+                receiveBytes = _udpClient.Receive(ref _remoteIpEndPoint);
             });
+        
+        HandleMessage(receiveBytes);
+
+        var rule = new Rule(
+            $"Connected to TX [blue]{_txName}[/] [blue dim]{_txSerial:x8}[/] ({_remoteIpEndPoint?.Address})");
+        AnsiConsole.Write(rule);
+        
+        _table = new Table()
+            .Border(TableBorder.Rounded)
+            .AddColumn("Channel")
+            .AddColumn("Value")
+            .AddRow("Pitch", "0")
+            .AddRow("Tail", "0")
+            .AddRow("Elevator", "0")
+            .AddRow("Aileron", "0")
+            .AddRow("Motor")
+            .AddRow("Bank")
+            .AddRow("Option 1")
+            .AddRow("Option 2")
+            .AddRow("Option 3")
+            .AddRow("Option 4")
+            .AddRow("Buddy");
+
+        AnsiConsole.Live(_table)
+            .AutoClear(false)
+            .Overflow(VerticalOverflow.Ellipsis)
+            .Cropping(VerticalOverflowCropping.Top)
+            .Start(context =>
+            {
+                while (true)
+                {
+                    receiveBytes = _udpClient.Receive(ref _remoteIpEndPoint);
+                    HandleMessage(receiveBytes);
+                    
+                    context.Refresh();
+                }
+            });
+
+    
     }
 
     private void HandleMessage(byte[] receiveBytes)
@@ -121,15 +162,17 @@ public class VbarUdpReceiver
         var trim4 = receiveBytes[26] & 0xFF | (receiveBytes[27] & 0xFF) << 8;
 
         _gamepadManager.ApplyToGamepad(_state);
+        
+        UpdateTable();
     }
 
     private void HandleTransmitterNamePacket(byte[] receiveBytes)
     {
-        var serial = receiveBytes[4] & 0xFF | (receiveBytes[5] & 0xFF) << 8 |
-                     (receiveBytes[6] & 0xFF) << 16 |
-                     (receiveBytes[7] & 0xFF) << 24;
+        _txSerial = receiveBytes[4] & 0xFF | (receiveBytes[5] & 0xFF) << 8 |
+                  (receiveBytes[6] & 0xFF) << 16 |
+                  (receiveBytes[7] & 0xFF) << 24;
 
-        var name = Encoding.UTF8.GetString(
+        _txName = Encoding.UTF8.GetString(
             receiveBytes[new Range(9, new Index(receiveBytes[8] + 9, fromEnd: false))]);
         //Console.WriteLine($"name: {name} serial: {serial:x8}");
 
@@ -137,19 +180,25 @@ public class VbarUdpReceiver
         _udpClient!.Send(_sendData, _remoteIpEndPoint.Address.ToString(), 1026);
 
         // live update takes less than a ms and should therefore finish before the next packet arrives
-        // table
-        //     .UpdateCell(0, 1, pitch.ToString())
-        //     .UpdateCell(1, 1, tail.ToString())
-        //     .UpdateCell(2, 1, elev.ToString())
-        //     .UpdateCell(3, 1, ail.ToString())
-        //     .UpdateCell(4, 1, motorOff ? "off" : motorIdle ? "Idle" : "On")
-        //     .UpdateCell(5, 1, bank1 ? "1" : bank2 ? "2" : "3" )
-        //     .UpdateCell(6, 1, _state.Option1A ? "A" : _state.Option1B ? "B" : "Middle")
-        //     .UpdateCell(7, 1, _state.Option2A ? "A" : _state.Option2B ? "B" : "Middle")
-        //     .UpdateCell(8, 1, _state.Option3A ? "A" : _state.Option3B ? "B" : "Middle")
-        //     .UpdateCell(9, 1, option4A ? "A" : option4B ? "B" : "Middle")
-        //     .UpdateCell(10, 1, master ? "master" : "buddy");
-        //
-        // context.Refresh();
+        //UpdateTable();
+    }
+
+    private void UpdateTable()
+    {
+        if (_table != null)
+        {
+            _table
+                .UpdateCell(0, 1, _state.Pitch.ToString())
+                .UpdateCell(1, 1, _state.Tail.ToString())
+                .UpdateCell(2, 1, _state.Elev.ToString())
+                .UpdateCell(3, 1, _state.Ail.ToString())
+                .UpdateCell(4, 1, _state.MotorOff ? "off" : _state.MotorIdle ? "Idle" : "On")
+                .UpdateCell(5, 1, _state.Bank1 ? "1" : _state.Bank2 ? "2" : "3")
+                .UpdateCell(6, 1, _state.Option1A ? "A" : _state.Option1B ? "B" : "Middle")
+                .UpdateCell(7, 1, _state.Option2A ? "A" : _state.Option2B ? "B" : "Middle")
+                .UpdateCell(8, 1, _state.Option3A ? "A" : _state.Option3B ? "B" : "Middle")
+                .UpdateCell(9, 1, _state.Option4A ? "A" : _state.Option4B ? "B" : "Middle")
+                .UpdateCell(10, 1, _state.Master ? "master" : "buddy");
+        }
     }
 }
