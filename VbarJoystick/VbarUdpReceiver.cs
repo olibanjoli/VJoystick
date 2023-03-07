@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using Spectre.Console;
@@ -14,7 +15,7 @@ public class VbarUdpReceiver
     private VbarControlState _state;
     private IPEndPoint? _remoteIpEndPoint;
     private int _txSerial;
-    private string _txName;
+    private string _txName = string.Empty;
     private Table? _table;
 
     public VbarUdpReceiver(GamepadManager gamepadManager)
@@ -31,7 +32,7 @@ public class VbarUdpReceiver
 
     public void Run()
     {
-        byte[] receiveBytes = { };
+        var receiveBytes = Array.Empty<byte>();
         
         AnsiConsole.Status()
             .AutoRefresh(true)
@@ -77,14 +78,12 @@ public class VbarUdpReceiver
             {
                 while (true)
                 {
-                    receiveBytes = _udpClient.Receive(ref _remoteIpEndPoint);
+                    receiveBytes = _udpClient!.Receive(ref _remoteIpEndPoint);
                     HandleMessage(receiveBytes);
                     
                     context.Refresh();
                 }
             });
-
-    
     }
 
     private void HandleMessage(byte[] receiveBytes)
@@ -163,6 +162,8 @@ public class VbarUdpReceiver
 
         _gamepadManager.ApplyToGamepad(_state);
         
+        // live update takes less than a ms and should therefore
+        // finish before the next packet arrives
         UpdateTable();
     }
 
@@ -174,13 +175,8 @@ public class VbarUdpReceiver
 
         _txName = Encoding.UTF8.GetString(
             receiveBytes[new Range(9, new Index(receiveBytes[8] + 9, fromEnd: false))]);
-        //Console.WriteLine($"name: {name} serial: {serial:x8}");
-
 
         _udpClient!.Send(_sendData, _remoteIpEndPoint.Address.ToString(), 1026);
-
-        // live update takes less than a ms and should therefore finish before the next packet arrives
-        //UpdateTable();
     }
 
     private void UpdateTable()

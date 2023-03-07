@@ -118,6 +118,7 @@ AnsiConsole.Status()
         // AnsiConsole.Write(rule);
 
         ctx.Status("[green]Initialized[/]");
+        ctx.Refresh();
     });
 
 
