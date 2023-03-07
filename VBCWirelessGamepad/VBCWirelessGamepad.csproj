@@ -11,7 +11,6 @@
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <PublishReadyToRun>true</PublishReadyToRun>
         <PublishSingleFile>true</PublishSingleFile>
-        <ApplicationIcon>vbar-control-touch-ozeanblau-matt-05273_b_0.jpg</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
