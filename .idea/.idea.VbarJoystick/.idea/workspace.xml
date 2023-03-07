@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f50ae841-a906-496a-8f70-bf3824a86460" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.VbarJoystick/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VBCWirelessGamepad/VBCWirelessGamepad.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VBCWirelessGamepad/VBCWirelessGamepad.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VbarJoystick/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VbarJoystick/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,7 @@
       <updated>1677709770972</updated>
       <workItem from="1677709772585" duration="11516000" />
       <workItem from="1677835367682" duration="59365000" />
-      <workItem from="1678221785454" duration="6470000" />
+      <workItem from="1678221785454" duration="7472000" />
     </task>
     <servers />
   </component>
