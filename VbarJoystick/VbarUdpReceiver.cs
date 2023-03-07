@@ -46,6 +46,8 @@ public class VbarUdpReceiver
                 ctx.Status = "[yellow]waiting for connection from VBar TX...[/]";
 
                 receiveBytes = _udpClient.Receive(ref _remoteIpEndPoint);
+                
+                Console.WriteLine("yes");
             });
         
         HandleMessage(receiveBytes);

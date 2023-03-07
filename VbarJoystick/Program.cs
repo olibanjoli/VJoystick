@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Runtime.CompilerServices;
-using DebounceThrottle;
 using Spectre.Console;
 using VbarJoystick;
 using vJoyInterfaceWrap;
@@ -118,11 +116,10 @@ AnsiConsole.Status()
         // AnsiConsole.Write(rule);
 
         ctx.Status("[green]Initialized[/]");
-        ctx.Refresh();
     });
 
 
-AnsiConsole.WriteLine();
+AnsiConsole.WriteLine("foo");
 
 vbarUdpReceiver.Run();
 

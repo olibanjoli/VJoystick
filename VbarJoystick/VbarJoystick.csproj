@@ -8,16 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-<!--      <PackageReference Include="vJoyInterface" Version="0.2.1.6" />-->
-        <Reference Include="vJoyInterfaceWrap, Version=0.2.0.5, Culture=neutral, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>..\x64\vJoyInterfaceWrap.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="DebounceThrottle" Version="1.0.0" />
-      <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.256" />
       <PackageReference Include="Spectre.Console" Version="0.46.0" />
     </ItemGroup>
 
