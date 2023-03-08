@@ -11,6 +11,7 @@
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <PublishReadyToRun>true</PublishReadyToRun>
         <PublishSingleFile>true</PublishSingleFile>
+        <ApplicationIcon>vbar.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>

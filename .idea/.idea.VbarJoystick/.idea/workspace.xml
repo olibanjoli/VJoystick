@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f50ae841-a906-496a-8f70-bf3824a86460" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VbarJoystick/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VbarJoystick/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VBCWirelessGamepad/VBCWirelessGamepad.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VBCWirelessGamepad/VBCWirelessGamepad.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/docusaurus.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,10 +65,10 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="VbarJoystick" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/VbarJoystick/bin/Debug/net6.0/VbarJoystick.exe" />
+    <configuration name="VBCWirelessGamepad" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/VBCWirelessGamepad/bin/Debug/net6.0/win-x64/VBCWirelessGamepad.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VbarJoystick/bin/Debug/net6.0" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VBCWirelessGamepad/bin/Debug/net6.0/win-x64" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
@@ -92,7 +94,7 @@
       <updated>1677709770972</updated>
       <workItem from="1677709772585" duration="11516000" />
       <workItem from="1677835367682" duration="59365000" />
-      <workItem from="1678221785454" duration="9279000" />
+      <workItem from="1678221785454" duration="9312000" />
     </task>
     <servers />
   </component>
