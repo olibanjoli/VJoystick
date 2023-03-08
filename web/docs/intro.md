@@ -5,3 +5,16 @@ sidebar_position: 1
 # Intro
 
 The VBC Wireless Gamepad application enables wireless control of a generic Windows game controller using a VBarControl Touch, allowing it to be used with a wide range of flight simulators and games. While some simulators natively support the protocol developed by Mikado, they remain in the minority. The VBC Wireless Gamepad fills this gap by providing a versatile solution that can be used with any simulator or game that supports Windows joysticks.
+
+### Limitations
+
+It's important to note that Direct Input, the input API used by this application, has a maximum support for only 8 axes. As a result, not all the axes on the VBarControl Touch are available for use with the software. The following axes are currently available:
+
+- Pitch
+- Tail
+- Ailerons
+- Elevator
+- Pot1
+- Pot2
+- Trim1
+- Trim2 (currently not working)
