@@ -6,8 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Use your VBar Control for any Simulator",
+  title: "Use your VBar Control for any Simulator",
+  tagline: "no additional devices needed",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -92,8 +92,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/intro",
+                label: "Installation",
+                to: "/docs/installation",
               },
             ],
           },
@@ -101,16 +101,12 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "VStabi Website",
-                href: "https://www.vstabi.info/en",
-              },
-              {
                 label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                href: "https://discord.gg/mamsCwQgxa",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                label: "GitHub",
+                href: "https://github.com/olibanjoli/VBCWirelessGamepad",
               },
             ],
           },
@@ -122,8 +118,12 @@ const config = {
                 to: "/blog",
               },
               {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                label: "VStabi Website",
+                href: "https://www.vstabi.info/en",
+              },
+              {
+                label: "Mikado Shop",
+                href: "https://shop.mikado-heli.de/",
               },
             ],
           },
@@ -135,6 +135,20 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 };
 
 module.exports = config;
