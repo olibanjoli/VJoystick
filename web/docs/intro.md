@@ -18,3 +18,5 @@ It's important to note that Direct Input, the input API used by this application
 - Pot2
 - Trim1
 - Trim2 (currently not working)
+
+Technically, it is possible to use two game controllers controlled by one VBarControl Touch to access all the axes. However, for most simulator applications, 8 axes should be sufficient to provide a satisfying flying experience.
