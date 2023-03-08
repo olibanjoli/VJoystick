@@ -2,10 +2,18 @@ namespace VBCWirelessGamepad;
 
 public class VbarControlState
 {
-    public int Pitch { get; set; } = 0;
-    public int Tail { get; set; } = 0;
-    public int Ail { get; set; } = 0;
-    public int Elev { get; set; } = 0;
+    public int Pitch { get; set; }
+    public int Tail { get; set; }
+    public int Ail { get; set; }
+    public int Elev { get; set; }
+    
+    public int Pot1 { get; set; }
+    public int Pot2 { get; set; }
+    
+    public int Trim1 { get; set; }
+    public int Trim2 { get; set; }
+    public int Trim3 { get; set; }
+    public int Trim4 { get; set; }
 
     public int Switches { get; set; }
     public bool MotorOff { get; set; }

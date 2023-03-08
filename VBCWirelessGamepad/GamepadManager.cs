@@ -218,10 +218,11 @@ public class GamepadManager
         _joystickState.AxisY = Mikado.MapRange(state.Elev, _ranges.Y);
         _joystickState.AxisZ = Mikado.MapRange(state.Tail, _ranges.Z);
         _joystickState.AxisXRot = Mikado.MapRange(state.Pitch, _ranges.RX);
-
-        // TODO: add missing controls
-        // _iReport.AxisYRot = Mikado.MapRange(pot1, maxRY);
-        // _iReport.AxisZRot = Mikado.MapRange(pot2, maxRZ);
+        _joystickState.AxisYRot = Mikado.MapRange(state.Pot1, _ranges.RY);
+        _joystickState.AxisZRot = Mikado.MapRange(state.Pot2, _ranges.RZ);
+        _joystickState.Slider = Mikado.MapRange(state.Trim1, _ranges.SL0);
+        // TODO: where does it map to?
+        //_joystickState.Wheel = Mikado.MapRange(state.Trim2, _ranges.SL1);
 
         _joystick.UpdateVJD(JoystickId, ref _joystickState);
     }

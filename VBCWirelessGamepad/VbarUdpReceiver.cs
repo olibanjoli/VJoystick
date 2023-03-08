@@ -164,12 +164,12 @@ public class VbarUdpReceiver
         _state.Pitch = receiveBytes[14] & 0xFF | (receiveBytes[15] & 0xFF) << 8;
 
         // aux channels center value is 2048
-        var pot1 = receiveBytes[16] & 0xFF | (receiveBytes[17] & 0xFF) << 8;
-        var pot2 = receiveBytes[18] & 0xFF | (receiveBytes[19] & 0xFF) << 8;
-        var trim1 = receiveBytes[20] & 0xFF | (receiveBytes[21] & 0xFF) << 8;
-        var trim2 = receiveBytes[22] & 0xFF | (receiveBytes[23] & 0xFF) << 8;
-        var trim3 = receiveBytes[24] & 0xFF | (receiveBytes[25] & 0xFF) << 8;
-        var trim4 = receiveBytes[26] & 0xFF | (receiveBytes[27] & 0xFF) << 8;
+        _state.Pot1 = receiveBytes[16] & 0xFF | (receiveBytes[17] & 0xFF) << 8;
+        _state.Pot2 = receiveBytes[18] & 0xFF | (receiveBytes[19] & 0xFF) << 8;
+        _state.Trim1 = receiveBytes[20] & 0xFF | (receiveBytes[21] & 0xFF) << 8;
+        _state.Trim2 = receiveBytes[22] & 0xFF | (receiveBytes[23] & 0xFF) << 8;
+        _state.Trim3 = receiveBytes[24] & 0xFF | (receiveBytes[25] & 0xFF) << 8;
+        _state.Trim4 = receiveBytes[26] & 0xFF | (receiveBytes[27] & 0xFF) << 8;
 
         _gamepadManager.ApplyToGamepad(_state);
 
