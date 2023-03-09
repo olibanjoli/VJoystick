@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`VBC Wireless Gamepad`}
-      description="Description will go into a meta tag in <head />"
+      description="Use your VBar Control for any Simulator or game"
     >
       <HomepageHeader />
       <main>
