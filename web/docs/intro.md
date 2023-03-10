@@ -19,4 +19,4 @@ It's important to note that Direct Input, the input API used by this application
 - Trim1
 - Trim2 (currently not working)
 
-Technically, it is possible to use two game controllers controlled by one VBarControl Touch to access all the axes. However, for most simulator applications, 8 axes should be sufficient to provide a satisfying flying/training experience. Trim3/Trim4 are currently not available. For buttons there are no limitations, all buttons of the VBCt are mapped.
+Technically, it is possible to use two game controllers controlled by one VBarControl Touch to access all the axes. However, for most simulator applications, 8 axes should be sufficient to provide a satisfying flying/training experience. Only Trim3/Trim4 are not usable. For buttons there are no limitations, all buttons of the VBCt are mapped.
