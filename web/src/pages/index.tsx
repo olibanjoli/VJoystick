@@ -23,7 +23,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg shadow-xl"
             to="/docs/intro"
           >
-            ☞ Easy &amp; quick installation
+            Easy &amp; quick installation 🔥🔥
           </Link>
         </div>
       </div>

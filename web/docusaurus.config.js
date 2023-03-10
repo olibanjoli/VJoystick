@@ -41,14 +41,11 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          // https://github.com/olibanjoli/VBCWirelessGamepad/tree/master/web
           editUrl:
             "https://github.com/olibanjoli/VBCWirelessGamepad/tree/master/web",
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/olibanjoli/VBCWirelessGamepad/tree/master/web",
         },
@@ -63,7 +60,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/tx_logo.bmp",
       navbar: {
         title: "VBC Wireless Gamepad",
         // logo: {
