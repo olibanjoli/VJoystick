@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
       <HomepageHeader />
       <main>
         <section className="bg-blue py-20">
-          <div className="flex items-center justify-center gap-8">
+          <div className="flex flex-col items-center justify-center gap-8 md:flex-row">
             <div className="flex flex-col">
               <img src="/img/vbar1.png" className="w-64" />
             </div>
@@ -60,7 +60,7 @@ export default function Home(): JSX.Element {
         <section>
           <div className="flex flex-col items-center gap-8">
             <h2 className="text-semibold text-3xl">Filling the Gap</h2>
-            <p className="max-w-4xl text-center">
+            <p className="max-w-4xl px-4 text-center">
               The VBC Wireless Gamepad application enables wireless control of a
               generic Windows game controller using a VBarControl Touch,
               allowing it to be used with a wide range of flight simulators and
@@ -77,7 +77,7 @@ export default function Home(): JSX.Element {
             <img
               src="/img/demo.gif"
               alt="demo"
-              className="max-w-3xl shadow-lg"
+              className="w-full shadow-lg md:max-w-3xl"
             />
             <p className="mt-1 text-sm italic text-gray-600">
               VBCWirelessGamepad in action
