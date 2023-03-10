@@ -66,10 +66,10 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "VBC Wireless Gamepad",
-        logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
-        },
+        // logo: {
+        //   alt: "My Site Logo",
+        //   src: "img/vbar2.png",
+        // },
         items: [
           {
             type: "doc",
@@ -93,7 +93,7 @@ const config = {
             items: [
               {
                 label: "Installation",
-                to: "/docs/installation",
+                to: "/docs/intro",
               },
             ],
           },

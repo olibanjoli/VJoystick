@@ -4,7 +4,7 @@ The VBC Wireless Gamepad application enables wireless control of a generic Windo
 
 ## Installation
 
-1. Build the solution or download relase from [here](https://vbc-wireless-gamepad.vercel.app/docs/installation/)
+1. Build the solution or download release from [here](https://vbc-wireless-gamepad.vercel.app/docs/installation/)
 2. Run `VBCWirelessGamepad.exe`  
    ![Startup](./web/docs/installation/startup.gif)
 3. Start IP UDP Simulator App von your VBCt  

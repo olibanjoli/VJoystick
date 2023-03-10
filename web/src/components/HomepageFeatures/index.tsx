@@ -58,14 +58,6 @@ function Feature({ title, Svg, description }: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <>
-      <section className="bg-blue">
-        <div className="flex items-center">
-          <div className="flex flex-col">
-            <img src="/img/vbar1.png" className="w-64" />
-          </div>
-          <div>+</div>
-        </div>
-      </section>
       <section className={styles.features}>
         <div className="container">
           <div className="row">

@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Installation
 
+:::info Preview Version
+
+Although the software is already functional and works quite well, it is still an early test version. Any feedback is much appreciated either in [Discord](https://discord.gg/mamsCwQgxa), [Github](https://github.com/olibanjoli/VBCWirelessGamepad) or [E-Mail](mailto:vbcwirelessgamepad@gmail.com).
+
+:::
+
 1. Download the latest version from **[here](/r/VBCWirelessGamepad_1.0-beta.1.zip)**.
 2. Extract all files from the archive
 3. Run `VBCWirelessGamepad.exe` ![Startup](./startup.gif)
