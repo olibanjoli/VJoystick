@@ -143,19 +143,19 @@ public class VbarUdpReceiver
 
         _state.Option1A = (_state.Switches & 0b_0000_0000_0000_0000_0000_0000_0100_0000) != 0;
         _state.Option1B = (_state.Switches & 0b_0000_0000_0000_0000_0000_0000_1000_0000) != 0;
-        _state.Option1Middle = !_state.Option1A && !_state.Option1A;
+        _state.Option1Middle = _state is { Option1A: false, Option1B: false };
 
         _state.Option2A = (_state.Switches & 0b_0000_0000_0000_0000_0000_0001_0000_0000) != 0;
         _state.Option2B = (_state.Switches & 0b_0000_0000_0000_0000_0000_0010_0000_0000) != 0;
-        _state.Option2Middle = !_state.Option2A && !_state.Option2A;
+        _state.Option2Middle = _state is { Option2A: false, Option2B: false };
 
         _state.Option3A = (_state.Switches & 0b_0000_0000_0000_0000_0000_0100_0000_0000) != 0;
         _state.Option3B = (_state.Switches & 0b_0000_0000_0000_0000_0000_1000_0000_0000) != 0;
-        _state.Option3Middle = !_state.Option3A && !_state.Option3A;
+        _state.Option3Middle = _state is { Option3A: false, Option3B: false };
 
         _state.Option4A = (_state.Switches & 0b_0000_0000_0000_0000_0001_0000_0000_0000) != 0;
         _state.Option4B = (_state.Switches & 0b_0000_0000_0000_0000_0010_0000_0000_0000) != 0;
-        _state.Option4Middle = !_state.Option4A && !_state.Option4A;
+        _state.Option4Middle = _state is { Option4A: false, Option4B: false };
 
         // main channels center value is 2048
         _state.Ail = receiveBytes[8] & 0xFF | (receiveBytes[9] & 0xFF) << 8;
