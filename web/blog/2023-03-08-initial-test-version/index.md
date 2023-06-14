@@ -5,6 +5,6 @@ authors: [oli]
 tags: [release, testing]
 ---
 
-Releasing an initial test version. Download **[here](/r/VBCWirelessGamepad_1.0-beta.1.zip)**. Any feedback is appreciated in [Discord](https://discord.gg/mamsCwQgxa), [Github](https://github.com/olibanjoli/VBCWirelessGamepad) or [E-Mail](mailto:vbcwirelessgamepad@gmail.com).
+Releasing an initial test version. Download **[here](/r/VJoystick_1.0-beta.1.zip)**. Any feedback is appreciated in [Discord](https://discord.gg/mamsCwQgxa), [Github](https://github.com/olibanjoli/VJoystick) or [E-Mail](mailto:vbcwirelessgamepad@gmail.com).
 
 ![demo](./demo.gif)

@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`VBC Wireless Gamepad`}
+      title={`VJoystick`}
       description="Use your VBar Control for any Simulator or game"
     >
       <HomepageHeader />
@@ -61,14 +61,13 @@ export default function Home(): JSX.Element {
           <div className="flex flex-col items-center gap-8">
             <h2 className="text-semibold text-3xl">Filling the Gap</h2>
             <p className="max-w-4xl px-4 text-center">
-              The VBC Wireless Gamepad application enables wireless control of a
-              generic Windows game controller using a VBarControl Touch,
-              allowing it to be used with a wide range of flight simulators and
-              games. While some simulators natively support the protocol
-              developed by Mikado, they remain in the minority. The VBC Wireless
-              Gamepad fills this gap by providing a versatile solution that can
-              be used with any simulator or game that supports Windows
-              joysticks.
+              The VJoystick application enables wireless control of a generic
+              Windows game controller using a VBarControl Touch, allowing it to
+              be used with a wide range of flight simulators and games. While
+              some simulators natively support the protocol developed by Mikado,
+              they remain in the minority. VJoystick fills this gap by providing
+              a versatile solution that can be used with any simulator or game
+              that supports Windows joysticks.
             </p>
           </div>
         </section>
@@ -80,7 +79,7 @@ export default function Home(): JSX.Element {
               className="w-full shadow-lg md:max-w-3xl"
             />
             <p className="mt-1 text-sm italic text-gray-600">
-              VBCWirelessGamepad in action
+              VJoystick in action
             </p>
           </div>
         </section>

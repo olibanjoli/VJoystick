@@ -11,7 +11,7 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://vbc-wireless-gamepad.vercel.app",
+  url: "https://vjoystick.vercel.app",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -19,7 +19,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "olibanjoli", // Usually your GitHub org/user name.
-  projectName: "VBCWirelessGamepad", // Usually your repo name.
+  projectName: "VJoystick", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -41,13 +41,11 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/olibanjoli/VBCWirelessGamepad/tree/master/web",
+          editUrl: "https://github.com/olibanjoli/VJoystick/tree/master/web",
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-            "https://github.com/olibanjoli/VBCWirelessGamepad/tree/master/web",
+          editUrl: "https://github.com/olibanjoli/VJoystick/tree/master/web",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -62,7 +60,7 @@ const config = {
       // Replace with your project's social card
       image: "img/tx_logo.bmp",
       navbar: {
-        title: "VBC Wireless Gamepad",
+        title: "VJoystick",
         // logo: {
         //   alt: "My Site Logo",
         //   src: "img/vbar2.png",
@@ -76,7 +74,7 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/olibanjoli/VBCWirelessGamepad",
+            href: "https://github.com/olibanjoli/VJoystick",
             label: "GitHub",
             position: "right",
           },
@@ -103,7 +101,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/olibanjoli/VBCWirelessGamepad",
+                href: "https://github.com/olibanjoli/VJoystick",
               },
             ],
           },
@@ -125,7 +123,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} VBC Wireless Gamepad`,
+        copyright: `Copyright © ${new Date().getFullYear()} VJoystick`,
       },
       prism: {
         theme: lightCodeTheme,
