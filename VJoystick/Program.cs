@@ -12,12 +12,17 @@ try
         return;
     }
 
+    var initialized = false;
+
     AnsiConsole.Status()
         .AutoRefresh(false)
         .Spinner(Spinner.Known.Default)
-        .Start("[yellow]Initializing...[/]", ctx => { gamepadManager.Initialize(); });
+        .Start("[yellow]Initializing...[/]", ctx => { initialized = gamepadManager.Initialize(); });
 
-    vbarUdpReceiver.Run();
+    if (initialized)
+    {
+        vbarUdpReceiver.Run();
+    }
 }
 catch (Exception e)
 {

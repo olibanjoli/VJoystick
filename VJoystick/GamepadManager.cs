@@ -110,7 +110,16 @@ public class GamepadManager
         var AxisRY = _joystick.GetVJDAxisExist(JoystickId, HID_USAGES.HID_USAGE_RY);
         var AxisRZ = _joystick.GetVJDAxisExist(JoystickId, HID_USAGES.HID_USAGE_RZ);
 
+        _joystick.ResetVJD(JoystickId);
         var buttonCount = _joystick.GetVJDButtonNumber(JoystickId);
+
+        // TODO: validate if this check is necessary
+        if (buttonCount < 16)
+        {
+            AnsiConsole.Console.MarkupLine($"[yellow]configured button count is {buttonCount} but should be >= 16[/]");
+            
+            return false;
+        }
 
         long maxX = 0;
         long maxY = 0;
@@ -159,7 +168,7 @@ public class GamepadManager
 
     public void ApplyToGamepad(VbarControlState state)
     {
-        var buttonState = 0;
+        var buttonState = (uint)0;
 
         if (state.MotorOff)
             buttonState |= (1 << 0);
@@ -212,8 +221,8 @@ public class GamepadManager
         if (state.Option3B)
             buttonState |= (1 << 16);
 
-        _joystickState.Buttons = (uint)buttonState;
-
+        _joystickState.Buttons = buttonState;
+        
         _joystickState.AxisX = Mikado.MapRange(state.Ail, _ranges!.X);
         _joystickState.AxisY = Mikado.MapRange(state.Elev, _ranges.Y);
         _joystickState.AxisZ = Mikado.MapRange(state.Tail, _ranges.Z);

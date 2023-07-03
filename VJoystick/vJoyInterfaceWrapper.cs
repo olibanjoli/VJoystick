@@ -397,7 +397,7 @@ public class vJoy
     /////	vJoy Device properties
     [DllImport("vJoyInterface.dll", EntryPoint = "GetVJDButtonNumber", CallingConvention = CallingConvention.Cdecl)]
     private static extern int _GetVJDButtonNumber(UInt32 rID);
-
+    
     [DllImport("vJoyInterface.dll", EntryPoint = "GetVJDDiscPovNumber", CallingConvention = CallingConvention.Cdecl)]
     private static extern int _GetVJDDiscPovNumber(UInt32 rID);
 
